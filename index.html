@@ -136,6 +136,79 @@ section {
 @media (min-width: 600px) {
   #fears h2, #benefits h2 { font-size: 2.1rem; }
 }
+
+#signup h2 {
+  margin: 0 0 24px;
+  font-size: 1.7rem;
+  line-height: 1.2;
+}
+
+#signup .field { margin: 0 0 20px; }
+
+#signup label {
+  display: block;
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+#signup .hint {
+  margin: 0 0 6px;
+  font-size: 0.9em;
+  color: var(--muted);
+}
+
+#signup input {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  padding: 10px 14px;
+  border: 2px solid #cdbfa9;
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--text);
+  font: inherit;
+  font-size: 18px;
+}
+
+#signup input:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 2px;
+}
+
+#signup .btn { width: 100%; margin-top: 4px; }
+
+#signup .small {
+  margin: 14px 0 0;
+  font-size: 0.9em;
+  color: var(--muted);
+  text-align: center;
+}
+
+#form-error {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #fdeee4;
+  border: 1px solid var(--accent);
+  color: var(--text);
+}
+
+#form-thanks {
+  margin: 0;
+  padding: 24px 22px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid #eadfce;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+#form-error[hidden], #form-thanks[hidden], #signup-form[hidden] { display: none; }
+
+@media (min-width: 600px) {
+  #signup h2 { font-size: 2.1rem; }
+}
 </style>
 </head>
 <body>
@@ -175,9 +248,57 @@ section {
       </ul>
     </div>
   </section>
-  <section id="signup"></section>
+  <section id="signup">
+    <div class="wrap">
+      <h2>Запишитесь на бесплатный вебинар</h2>
+      <p id="form-error" role="alert" hidden>Пожалуйста, заполните оба поля</p>
+      <form id="signup-form" novalidate>
+        <div class="field">
+          <label for="name">Как к вам обращаться</label>
+          <input type="text" id="name" name="name" autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label for="contact">Телефон или e-mail</label>
+          <p class="hint" id="contact-hint">например, телефон или почта</p>
+          <input type="text" id="contact" name="contact" autocomplete="email" aria-describedby="contact-hint">
+        </div>
+        <button class="btn" type="submit">Записаться на бесплатный вебинар</button>
+        <p class="small">Ваши данные нужны только для того, чтобы связаться с вами</p>
+        <p class="small">Бесплатно. Спрашивать можно всё</p>
+      </form>
+      <p id="form-thanks" hidden>Спасибо, мы свяжемся с вами</p>
+    </div>
+  </section>
 </main>
 <script>
+(function () {
+  var form = document.getElementById('signup-form');
+  var nameInput = document.getElementById('name');
+  var contactInput = document.getElementById('contact');
+  var errorBox = document.getElementById('form-error');
+  var thanksBox = document.getElementById('form-thanks');
+  var done = false;
+
+  // ЗАГЛУШКА: сюда подключить сбор заявок
+  function onSubmit(event) {
+    event.preventDefault();
+    if (done) { return; }
+    var name = nameInput.value.trim();
+    var contact = contactInput.value.trim();
+    if (!name || !contact) {
+      errorBox.hidden = false;
+      thanksBox.hidden = true;
+      (!name ? nameInput : contactInput).focus();
+      return;
+    }
+    done = true;
+    errorBox.hidden = true;
+    form.hidden = true;
+    thanksBox.hidden = false;
+  }
+
+  form.addEventListener('submit', onSubmit);
+})();
 </script>
 </body>
 </html>
