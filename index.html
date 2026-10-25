@@ -64,6 +64,7 @@ section {
 
 #hero {
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   padding-top: 32px;
@@ -76,6 +77,8 @@ section {
   line-height: 1.15;
 }
 
+#hero .wrap { width: 100%; }
+
 #hero .lead {
   margin: 0 0 28px;
 }
@@ -86,7 +89,7 @@ section {
 
 #hero .note {
   margin: 12px 0 0;
-  font-size: 0.9em;
+  font-size: 1rem;
   color: var(--muted);
   text-align: center;
 }
@@ -153,7 +156,7 @@ section {
 
 #signup .hint {
   margin: 0 0 6px;
-  font-size: 0.9em;
+  font-size: 1rem;
   color: var(--muted);
 }
 
@@ -179,7 +182,7 @@ section {
 
 #signup .small {
   margin: 14px 0 0;
-  font-size: 0.9em;
+  font-size: 1rem;
   color: var(--muted);
   text-align: center;
 }
@@ -260,7 +263,7 @@ section {
         <div class="field">
           <label for="contact">Телефон или e-mail</label>
           <p class="hint" id="contact-hint">например, телефон или почта</p>
-          <input type="text" id="contact" name="contact" autocomplete="email" aria-describedby="contact-hint">
+          <input type="text" id="contact" name="contact" aria-describedby="contact-hint">
         </div>
         <button class="btn" type="submit">Записаться на бесплатный вебинар</button>
         <p class="small">Ваши данные нужны только для того, чтобы связаться с вами</p>
