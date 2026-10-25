@@ -61,11 +61,53 @@ section {
   outline: 3px solid var(--text);
   outline-offset: 3px;
 }
+
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+#hero h1 {
+  margin: 0 0 16px;
+  font-size: 2.2rem;
+  line-height: 1.15;
+}
+
+#hero .lead {
+  margin: 0 0 28px;
+}
+
+#hero .btn {
+  width: 100%;
+}
+
+#hero .note {
+  margin: 12px 0 0;
+  font-size: 0.9em;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  #hero h1 { font-size: 3rem; }
+  #hero .btn { width: auto; }
+  #hero .note { text-align: left; }
+}
 </style>
 </head>
 <body>
 <main>
-  <section id="hero"></section>
+  <section id="hero">
+    <div class="wrap">
+      <h1>Вы не опоздали к нейросетям</h1>
+      <p class="lead">Бесплатный вебинар по ИИ для работающих людей 45+: без жаргона и в спокойном темпе, чтобы разговаривать с детьми и коллегами на равных.</p>
+      <a class="btn" href="#signup">Записаться на бесплатный вебинар</a>
+      <p class="note">Бесплатно. Дату сообщим после записи</p>
+    </div>
+  </section>
   <section id="fears"></section>
   <section id="benefits"></section>
   <section id="signup"></section>
