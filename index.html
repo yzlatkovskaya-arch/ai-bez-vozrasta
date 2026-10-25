@@ -16,14 +16,14 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { font-size: 112.5%; -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 1.6;
   overflow-wrap: break-word;
 }
@@ -73,7 +73,7 @@ section {
 
 #hero h1 {
   margin: 0 0 16px;
-  font-size: 2.2rem;
+  font-size: 2rem;
   line-height: 1.15;
 }
 
@@ -89,13 +89,13 @@ section {
 
 #hero .note {
   margin: 12px 0 0;
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: var(--muted);
   text-align: center;
 }
 
 @media (min-width: 600px) {
-  #hero h1 { font-size: 3rem; }
+  #hero h1 { font-size: 2.7rem; }
   #hero .btn { width: auto; }
   #hero .note { text-align: left; }
 }
@@ -109,13 +109,13 @@ section {
 
 #fears h2, #benefits h2 {
   margin: 0 0 24px;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   line-height: 1.2;
 }
 
 #fears .card { margin: 0 0 16px; }
 #fears .card:last-child { margin-bottom: 0; }
-#fears .card h3 { margin: 0 0 8px; font-size: 1.2rem; line-height: 1.3; }
+#fears .card h3 { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.3; }
 #fears .card p { margin: 0; }
 
 #benefits ul { list-style: none; margin: 0; padding: 0; }
@@ -137,12 +137,12 @@ section {
 }
 
 @media (min-width: 600px) {
-  #fears h2, #benefits h2 { font-size: 2.1rem; }
+  #fears h2, #benefits h2 { font-size: 1.85rem; }
 }
 
 #signup h2 {
   margin: 0 0 24px;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   line-height: 1.2;
 }
 
@@ -156,7 +156,7 @@ section {
 
 #signup .hint {
   margin: 0 0 6px;
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: var(--muted);
 }
 
@@ -165,12 +165,12 @@ section {
   width: 100%;
   min-height: 52px;
   padding: 10px 14px;
-  border: 2px solid #cdbfa9;
+  border: 2px solid #8c7b66;
   border-radius: 12px;
   background: #ffffff;
   color: var(--text);
   font: inherit;
-  font-size: 18px;
+  font-size: 1rem;
 }
 
 #signup input:focus-visible {
@@ -182,7 +182,7 @@ section {
 
 #signup .small {
   margin: 14px 0 0;
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: var(--muted);
   text-align: center;
 }
@@ -202,7 +202,7 @@ section {
   border-radius: 16px;
   background: var(--card);
   border: 1px solid #eadfce;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 600;
   text-align: center;
 }
@@ -210,7 +210,7 @@ section {
 #form-error[hidden], #form-thanks[hidden], #signup-form[hidden] { display: none; }
 
 @media (min-width: 600px) {
-  #signup h2 { font-size: 2.1rem; }
+  #signup h2 { font-size: 1.85rem; }
 }
 </style>
 </head>
@@ -237,7 +237,7 @@ section {
       </div>
       <div class="card">
         <h3>Кажется, поезд ушёл</h3>
-        <p>Нет. Начать можно с нуля и в любом возрасте.</p>
+        <p>Не ушёл. Начать можно с нуля и в любом возрасте.</p>
       </div>
     </div>
   </section>
@@ -269,7 +269,7 @@ section {
         <p class="small">Ваши данные нужны только для того, чтобы связаться с вами</p>
         <p class="small">Бесплатно. Спрашивать можно всё</p>
       </form>
-      <p id="form-thanks" hidden>Спасибо, мы свяжемся с вами</p>
+      <p id="form-thanks" tabindex="-1" hidden>Спасибо, мы свяжемся с вами</p>
     </div>
   </section>
 </main>
@@ -298,6 +298,7 @@ section {
     errorBox.hidden = true;
     form.hidden = true;
     thanksBox.hidden = false;
+    thanksBox.focus();
   }
 
   form.addEventListener('submit', onSubmit);
